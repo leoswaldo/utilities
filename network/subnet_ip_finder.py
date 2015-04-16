@@ -48,7 +48,8 @@ def find_free_ips(subnet):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser("This script is to find possible free "
+                "IPV4 address in a subnet \n")
     parser.add_argument('-s', '--subnet',
         help='sunet to search free IP Addresses e.x.: 10.27.15', required=True)
 

@@ -13,7 +13,7 @@ def tail(filepath, lines=10):
         f.seek(0, 2)
         file_size = f.tell()
         total_bytes_read = lines_founded= 0
-        #lines_content = ''
+        ##lines_content = ''
         # itereate through the file due to the lines found and the file_size
         while(lines_founded < lines and \
             total_bytes_read < file_size):
@@ -31,8 +31,8 @@ def tail(filepath, lines=10):
             # its read as bytes, we convert it and count the number of lines
             block_content = block_content.decode('utf-8')
             lines_founded += block_content.count('\n')
-            # next line of next release
-            #lines_content = '%s%s' % (block_content, lines_content)
+            # lines commented with '##' are for secondary solution
+            ##lines_content = '%s%s' % (block_content, lines_content)
             total_bytes_read += bytes_to_read
             
         # its time to move the cursor to the point where we read the ammount 
@@ -40,6 +40,7 @@ def tail(filepath, lines=10):
         # the end, remember readlines methon breaks with '\n' from cursor point
         f.seek(-total_bytes_read, 2)
         last_lines = f.readlines()
+        ##last_lines = lines_content.split('\n')
         
         # from now we make sure we only print the requested number or the 
         # max lines in case the file does not have that many
@@ -53,6 +54,7 @@ def tail(filepath, lines=10):
             line = last_lines[i + (total_last_lines - lines_to_tail\
                 )].decode('utf-8')
             line = line.replace('\n', '')
+            ##line = last_lines[i + (total_last_lines - lines_to_tail)]
             print(line)
 
 
